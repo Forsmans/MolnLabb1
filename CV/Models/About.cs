@@ -16,6 +16,7 @@ namespace CV.Models
         public string Email { get; set; }
         [Required]
         public string Phone { get; set; }
+        [Required]
         public string ImagePath { get; set; }
 
     }

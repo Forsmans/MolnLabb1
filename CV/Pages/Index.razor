@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 </head>
 
 
@@ -201,24 +201,247 @@
 
 
 <AuthorizeView>
-    <h1>Welcome to your new website</h1>
+    <div class="container my-5">
+        <div class="text-center">
+            <h1>Admin Panel</h1
+            <hr class="custom-hr"/>
+        </div>
+
+        @*ABOUT*@
+        <div class="text-center mt-5">
+            <h2>About</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateAbout" Model="newAbout" OnValidSubmit="CreateAboutAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>FirstName:</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>LastName:</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.LastName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Age</label>
+                    		<InputNumber class="form-control" @bind-Value="newAbout.Age"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Email</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.Email"></InputText>
+                    	</div>
+                        <div>
+                    		<label>Phone</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.Phone"></InputText>
+                    	</div>
+                        <div>
+                    		<label>ImagePath</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+
+         @*Skills*@
+        <div class="text-center mt-5">
+            <h2>Skills</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateSkill" Model="newSkill" OnValidSubmit="CreateSkillAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>Name:</label>
+                    		<InputText class="form-control" @bind-Value="newSkill.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Progress</label>
+                    		<InputNumber class="form-control" @bind-Value="newSkill.Progress"></InputNumber>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+         @*Project*@
+        <div class="text-center mt-5">
+            <h2>Project</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateProject" Model="newProject" OnValidSubmit="CreateProjectAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>Name:</label>
+                    		<InputText class="form-control" @bind-Value="newProject.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Year</label>
+                    		<InputNumber class="form-control" @bind-Value="newProject.Year"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Description:</label>
+                    		<InputText class="form-control" @bind-Value="newProject.Description"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>ImagePath:</label>
+                    		<InputText class="form-control" @bind-Value="newProject.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+
+         @*Education*@
+        <div class="text-center mt-5">
+            <h2>Project</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateProject" Model="newEdc" OnValidSubmit="CreateEducationAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>SchoolName:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.SchoolName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>StartYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newEdc.StartYear"></InputNumber>
+                    	</div>
+                        <div>
+                    		<label>EndYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newEdc.EndYear"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Title:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.Title"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Description:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.Description"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>ImagePath:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+
+         @*Job*@
+        <div class="text-center mt-5">
+            <h2>Jobs</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateJob" Model="newJob" OnValidSubmit="CreateJobAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>SchoolName:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.CompanyName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>StartYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newJob.StartYear"></InputNumber>
+                    	</div>
+                        <div>
+                    		<label>EndYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newJob.EndYear"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Title:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.Title"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Description:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.Description"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>ImagePath:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+    </div>
 </AuthorizeView>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Get the button element using Blazor's interop
-        var btn = document.querySelector('.btn');
 
-        // Add a click event listener to the button
-        btn.addEventListener('click', function (e) {
-            e.preventDefault(); // Prevent the default behavior of the anchor tag
-
-            // Get the target section (in this case, the "About" section)
-            var targetSection = document.getElementById('about');
-
-            // Use the scrollIntoView method with behavior 'smooth' to enable smooth scrolling
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-</script>
 
