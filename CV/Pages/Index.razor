@@ -1,0 +1,224 @@
+﻿@inject NavigationManager Navigation
+@page "/"
+
+<PageTitle>Magnus Forsman</PageTitle>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+</head>
+
+
+
+<section id="header">
+    <div class="container-fluid header">
+        <video src="assets/video/background.mp4" class="header-video" autoplay loop muted></video>
+        @* <h1 class="header-text">Magnus Forsman</h1> *@
+        <a class="btn btn-warning" @onclick="ScrollToAbout">Enter</a>
+    </div>
+</section>
+
+
+@* About *@
+<section id="about">
+    <div class="container-fluid mt-5 d-flex justify-content-center">
+        
+        <div class="row">
+            <hr class="custom-hr my-5" />
+            <div class="col-6">
+                
+                <img src="assets/img/me2.png" class="profile-picture"/>
+            </div>
+            <div class="col-6 mt-5">
+                <h1 class="mb-3">MAGNUS FORSMAN</h1>
+                <h4>.NET Cloud Developer <br/> student ITHS</h4>
+                <h4 class="mt-5">0725172527 <br> forsman.magnus@gmail.com</h4>
+            </div>
+        <hr class="custom-hr my-5" />
+        </div>
+
+
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-5">
+                    <h1>Skills</h1>
+
+                </div>
+                @if(skills == null)
+                {
+                    <p>Loading...</p>
+                    
+                }
+                else
+                    {
+                        @foreach (var skill in skills)
+                        {
+                            <p>@skill.Name</p>
+
+                        }
+                    }
+                
+            </div>
+            <div class="col-6">
+                <div class="mb-5 d-flex justify-content-center">
+
+                <h1>About</h1>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem nulla pharetra diam sit amet nisl suscipit. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus. Urna nec tincidunt praesent semper feugiat nibh. Egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Sodales neque sodales ut etiam sit amet. Cursus vitae congue mauris rhoncus aenean. Orci dapibus ultrices in iaculis nunc sed augue lacus. Placerat vestibulum lectus mauris ultrices. Suspendisse potenti nullam ac tortor vitae. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+@* Projects *@
+<section id="project">
+    <div class="row  d-flex text-center mb-5">
+        <h1 style="padding-top: 5vh;">Projects</h1>
+    </div>
+    <div class="container-fluid">
+        @if(educations == null)
+        {
+            <p>Loading..</p>            
+        }
+        else
+        {
+            <div class="row d-flex justify-content-center">
+                @foreach(var project in projects)
+                {
+                    <div class="card mb-3 col-3 m-4">
+                        <img src="assets/img/projects/wpfsample.png" />
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
+
+@* Educations *@
+<section id="education">
+    <div class="row  d-flex text-center mb-5">
+        <h1 style="padding-top: 5vh;">Educations</h1>
+        </div>
+    <div class="container-fluid">
+
+        @if(educations == null)
+        {
+            <p>Loading..</p>            
+        }
+        else
+        {
+            <div class="row d-flex justify-content-center">
+                @foreach (var education in educations)
+                {
+                    <div class="card mb-3 col-3 m-4">
+                        <h3 class="card-header" style="color: black;">@education.Title</h3>
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                            <rect width="100%" height="100%" fill="#868e96"></rect>
+                            <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                        </svg>
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2 days ago
+                        </div>
+                    </div>
+
+                }
+            </div>   
+        }
+    </div>
+</section>
+
+
+@* Jobs *@
+<section id="education">
+    <div class="row  d-flex text-center">
+        <h1 style="padding-top: 5vh;">Jobs</h1>
+    </div>
+    <div class="container-fluid" style="padding-bottom: 5vh;">
+
+        @if (jobs == null)
+        {
+            <p>Loading..</p>
+        }
+        else
+        {
+            <div class="row d-flex justify-content-center mt-5">
+                @foreach (var job in jobs)
+                {
+                    <div class="card mb-3 col-3 m-4">
+                        <h3 class="card-header" style="color: black;">@job.Title</h3>
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                            <rect width="100%" height="100%" fill="#868e96"></rect>
+                            <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                        </svg>
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2 days ago
+                        </div>
+                    </div>
+
+                }
+            </div>
+        }
+    </div>
+</section>
+
+
+
+<AuthorizeView>
+    <h1>Welcome to your new website</h1>
+</AuthorizeView>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the button element using Blazor's interop
+        var btn = document.querySelector('.btn');
+
+        // Add a click event listener to the button
+        btn.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent the default behavior of the anchor tag
+
+            // Get the target section (in this case, the "About" section)
+            var targetSection = document.getElementById('about');
+
+            // Use the scrollIntoView method with behavior 'smooth' to enable smooth scrolling
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+
