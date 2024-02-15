@@ -215,7 +215,35 @@
             <div class="col-6">
                 <div class="text-center">
                     <h3>Edit</h3>
-
+                    <EditForm Context="EditAbout" Model="editAbout" OnValidSubmit="UpdateAboutAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>FirstName:</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>LastName:</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.LastName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Age</label>
+                    		<InputNumber class="form-control" @bind-Value="editAbout.Age"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Email</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.Email"></InputText>
+                    	</div>
+                        <div>
+                    		<label>Phone</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.Phone"></InputText>
+                    	</div>
+                        <div>
+                    		<label>ImagePath</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Update</button>
+                    </EditForm>
 
                 </div>
             </div>

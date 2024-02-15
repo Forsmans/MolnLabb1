@@ -1,5 +1,6 @@
 ﻿using CV.Models;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Identity.Client;
 using System.Net.Http.Json;
 
 namespace CV.Pages
@@ -13,15 +14,23 @@ namespace CV.Pages
         private List<Education> educations { get; set; }
         private List<Job> jobs { get; set; }
         private List<Project> projects { get; set; }
+        private List<About> abouts { get; set; }
+
+        //Create
         public About newAbout = new About();
         public Skill newSkill = new Skill();
         public Project newProject = new Project();
         public Education newEdc = new Education();
         public Job newJob = new Job();
 
+        //EDIT
+        public About editAbout = new About();
+
 
         protected override async Task OnInitializedAsync()
         {
+            abouts = await apiClient.GetFromJsonAsync<List<About>>("abouts");
+            editAbout = abouts.FirstOrDefault();
             skills = await apiClient.GetFromJsonAsync<List<Skill>>("skills");
             educations = await apiClient.GetFromJsonAsync<List<Education>>("educations");
             jobs = await apiClient.GetFromJsonAsync<List<Job>>("jobs");
@@ -33,6 +42,8 @@ namespace CV.Pages
         {
             Navigation.NavigateTo("#about", true);
         }
+
+        //CREATE***********************************************************************
 
         private async Task CreateAboutAsync()
         {
@@ -128,5 +139,14 @@ namespace CV.Pages
             }
         }
 
+
+        //EDIT*****************************************************************************
+        private async Task UpdateAboutAsync()
+        {
+            HttpResponseMessage response = await apiClient.PutAsJsonAsync($"about/{editAbout.Id}", editAbout);
+        }
+
+
+        //DELETE***************************************************************************
     }
 }

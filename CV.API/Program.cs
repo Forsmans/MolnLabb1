@@ -60,7 +60,7 @@ namespace CV.API
             });
 
             //Update
-            app.MapPut("/about", async (ApplicationDbContext context, int id, About updatedAbout) =>
+            app.MapPut("/about/{id}", async (ApplicationDbContext context, int id, About updatedAbout) =>
             {
                 var toUpdate = context.About.ToList().Find(x => x.Id == id);
                 if (toUpdate == null)
@@ -116,7 +116,7 @@ namespace CV.API
             });
 
             //Update
-            app.MapPut("/education", async(ApplicationDbContext context, int id, Education updatedEducation) =>
+            app.MapPut("/education/{id}", async(ApplicationDbContext context, int id, Education updatedEducation) =>
             {
                 var toUpdate = context.Educations.ToList().Find(x => x.Id ==id);
                 if (toUpdate == null)
@@ -172,7 +172,7 @@ namespace CV.API
             });
 
             //Update
-            app.MapPut("/job", async (ApplicationDbContext context,int id, Job updatedJob) =>
+            app.MapPut("/job/{id}", async (ApplicationDbContext context,int id, Job updatedJob) =>
             {
                 var toUpdate = context.Jobs.ToList().Find(x => x.Id==id);
                 if (toUpdate == null)
@@ -229,7 +229,7 @@ namespace CV.API
             });
 
             //Update
-            app.MapPut("/project", async (ApplicationDbContext context,int id, Project updatedProject) =>
+            app.MapPut("/project/{id}", async (ApplicationDbContext context,int id, Project updatedProject) =>
             {
                 var toUpdate = context.Projects.ToList().Find(x => x.Id==id);
                 if (toUpdate == null)
@@ -283,7 +283,7 @@ namespace CV.API
             });
 
             //Update
-            app.MapPut("/skill", async (ApplicationDbContext context, int id, Skill updatedSkill) =>
+            app.MapPut("/skill/{id}", async (ApplicationDbContext context, int id, Skill updatedSkill) =>
             {
                 var toUpdate = context.Skills.ToList().Find(x => x.Id == id);
                 if (toUpdate == null)
