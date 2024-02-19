@@ -1,0 +1,402 @@
+﻿
+<AuthorizeView>
+    <div class="container my-5">
+        <div class="text-center">
+            <h1>Admin Panel</h1>
+            <hr class="custom-hr"/>
+        </div>
+
+        @*ABOUT*@
+        <div class="text-center mt-5">
+            <h2>About</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+                    <EditForm Context="EditAbout" Model="editAbout" OnValidSubmit="UpdateAboutAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>FirstName:</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>LastName:</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.LastName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Age</label>
+                    		<InputNumber class="form-control" @bind-Value="editAbout.Age"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Email</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.Email"></InputText>
+                    	</div>
+                        <div>
+                    		<label>Phone</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.Phone"></InputText>
+                    	</div>
+                        <div>
+                    		<label>ImagePath</label>
+                    		<InputText class="form-control" @bind-Value="editAbout.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Update</button>
+                    </EditForm>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateAbout" Model="newAbout" OnValidSubmit="CreateAboutAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>FirstName:</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>LastName:</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.LastName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Age</label>
+                    		<InputNumber class="form-control" @bind-Value="newAbout.Age"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Email</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.Email"></InputText>
+                    	</div>
+                        <div>
+                    		<label>Phone</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.Phone"></InputText>
+                    	</div>
+                        <div>
+                    		<label>ImagePath</label>
+                    		<InputText class="form-control" @bind-Value="newAbout.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+
+         @*Skills*@
+        <div class="text-center mt-5">
+            <h2>Skills</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+                    <EditForm Context="EditSkill" Model="editSkill" OnValidSubmit="UpdateSkillAsync" class="edit-form mt-5">
+                            @if (skills == null)
+                            {
+                                <p>Loading...</p>
+                            }
+                            else
+                            {
+                                @foreach (var skill in skills)
+                                {
+                                <button class="btn-primary" onclick="@( () => SelectEditSkill(skill) )">@skill.Name</button>
+                                } 
+                            }
+                        <div>
+                            <label>Name:</label>
+                            <InputText class="form-control" @bind-Value="editSkill.Name"></InputText>
+                        </div>
+                        <div>
+                            <label>Progress</label>
+                            <InputNumber class="form-control" @bind-Value="editSkill.Progress"></InputNumber>
+                        </div>
+                        <button class="mt-5 btn-primary" type="submit">Update</button>
+                        <button class="mt-5 btn-Danger" onclick="@( () => DeleteSkillAsync() )">Delete</button>
+                    </EditForm>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateSkill" Model="newSkill" OnValidSubmit="CreateSkillAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>Name:</label>
+                    		<InputText class="form-control" @bind-Value="newSkill.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Progress</label>
+                    		<InputNumber class="form-control" @bind-Value="newSkill.Progress"></InputNumber>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+         @*Project*@
+        <div class="text-center mt-5">
+            <h2>Project</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+                    <EditForm Context="EditProject" Model="editProject" OnValidSubmit="UpdateProjectAsync" class="edit-form mt-5">
+                        @if (projects == null)
+                        {
+                            <p>Loading...</p>
+                        }
+                        else
+                        {
+                            @foreach (var project in projects)
+                            {
+                                <button class="btn-primary" onclick="@( () => SelectEditProject(project) )">@project.Name</button>
+                            } 
+                        }
+                        <div>
+                            <label>Name:</label>
+                            <InputText class="form-control" @bind-Value="editProject.Name"></InputText>
+                        </div>
+                        <div>
+                            <label>Year</label>
+                            <InputNumber class="form-control" @bind-Value="editProject.Year"></InputNumber>
+                        </div>
+                        <div>
+                            <label>Description:</label>
+                            <InputText class="form-control" @bind-Value="editProject.Description"></InputText>
+                        </div>
+                        <div>
+                            <label>ImagePath:</label>
+                            <InputText class="form-control" @bind-Value="editProject.ImagePath"></InputText>
+                        </div>
+                        <button class="mt-5 btn-primary" type="submit">Update</button>
+                        <button class="mt-5 btn-Danger" onclick="@( () => DeleteProjectAsync() )">Delete</button>
+                    </EditForm>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateProject" Model="newProject" OnValidSubmit="CreateProjectAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>Name:</label>
+                    		<InputText class="form-control" @bind-Value="newProject.Name"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Year</label>
+                    		<InputNumber class="form-control" @bind-Value="newProject.Year"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Description:</label>
+                    		<InputText class="form-control" @bind-Value="newProject.Description"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>ImagePath:</label>
+                    		<InputText class="form-control" @bind-Value="newProject.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+
+         @*Education*@
+        <div class="text-center mt-5">
+            <h2>Educations</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+                    <EditForm Context="EditEdc" Model="editEdc" OnValidSubmit="UpdateEdcAsync" class="edit-form mt-5">
+                        @if (projects == null)
+                        {
+                            <p>Loading...</p>
+                        }
+                        else
+                        {
+                            @foreach (var edc in educations)
+                            {
+                                <button class="btn-primary" onclick="@( () => SelectEditEdc(edc) )">@edc.SchoolName</button>
+                            }
+                        }
+                        <div>
+                            <label>SchoolName:</label>
+                            <InputText class="form-control" @bind-Value="editEdc.SchoolName"></InputText>
+                        </div>
+                        <div>
+                            <label>StartYear</label>
+                            <InputNumber class="form-control" @bind-Value="editEdc.StartYear"></InputNumber>
+                        </div>
+                        <div>
+                            <label>EndYear</label>
+                            <InputNumber class="form-control" @bind-Value="editEdc.EndYear"></InputNumber>
+                        </div>
+                        <div>
+                            <label>Title:</label>
+                            <InputText class="form-control" @bind-Value="editEdc.Title"></InputText>
+                        </div>
+                        <div>
+                            <label>Description:</label>
+                            <InputText class="form-control" @bind-Value="editEdc.Description"></InputText>
+                        </div>
+                        <div>
+                            <label>ImagePath:</label>
+                            <InputText class="form-control" @bind-Value="editEdc.ImagePath"></InputText>
+                        </div>
+                        <button class="mt-5 btn-primary" type="submit">Update</button>
+                        <button class="mt-5 btn-Danger" onclick="@( () => DeleteEdcAsync() )">Delete</button>
+                    </EditForm>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateEdc" Model="newEdc" OnValidSubmit="CreateEducationAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>SchoolName:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.SchoolName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>StartYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newEdc.StartYear"></InputNumber>
+                    	</div>
+                        <div>
+                    		<label>EndYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newEdc.EndYear"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Title:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.Title"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Description:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.Description"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>ImagePath:</label>
+                    		<InputText class="form-control" @bind-Value="newEdc.ImagePath"></InputText>
+                    	</div>
+                        <button class="mt-5 btn-primary" type="submit">Create</button>
+                        
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+
+         @*Job*@
+        <div class="text-center mt-5">
+            <h2>Jobs</h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Edit</h3>
+                    <EditForm Context="EditJob" Model="editJob" OnValidSubmit="UpdateJobAsync" class="edit-form mt-5">
+                        @if (jobs == null)
+                        {
+                            <p>Loading...</p>
+                        }
+                        else
+                        {
+                            @foreach (var job in jobs)
+                            {
+                                <button class="btn-primary" onclick="@( () => SelectEditJob(job) )">@job.CompanyName</button>
+                            }
+                        }
+                        <div>
+                            <label>CompanyName:</label>
+                            <InputText class="form-control" @bind-Value="editJob.CompanyName"></InputText>
+                        </div>
+                        <div>
+                            <label>StartYear</label>
+                            <InputNumber class="form-control" @bind-Value="editJob.StartYear"></InputNumber>
+                        </div>
+                        <div>
+                            <label>EndYear</label>
+                            <InputNumber class="form-control" @bind-Value="editJob.EndYear"></InputNumber>
+                        </div>
+                        <div>
+                            <label>Title:</label>
+                            <InputText class="form-control" @bind-Value="editJob.Title"></InputText>
+                        </div>
+                        <div>
+                            <label>Description:</label>
+                            <InputText class="form-control" @bind-Value="editJob.Description"></InputText>
+                        </div>
+                        <div>
+                            <label>ImagePath:</label>
+                            <InputText class="form-control" @bind-Value="editJob.ImagePath"></InputText>
+                        </div>
+                        <button class="mt-5 btn-primary" type="submit">Update</button>
+                        <button class="mt-5 btn-Danger" onclick="@( () => DeleteJobAsync() )">Delete</button>
+                    </EditForm>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <h3>Create</h3>
+                    <EditForm Context="CreateJob" Model="newJob" OnValidSubmit="CreateJobAsync" class="edit-form mt-5">
+                    	<DataAnnotationsValidator />
+                    	<ValidationSummary />
+                    	<div>
+                    		<label>CompanyName:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.CompanyName"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>StartYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newJob.StartYear"></InputNumber>
+                    	</div>
+                        <div>
+                    		<label>EndYear</label>
+                    		<InputNumber class="form-control" @bind-Value="newJob.EndYear"></InputNumber>
+                    	</div>
+                    	<div>
+                    		<label>Title:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.Title"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>Description:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.Description"></InputText>
+                    	</div>
+                    	<div>
+                    		<label>ImagePath:</label>
+                    		<InputText class="form-control" @bind-Value="newJob.ImagePath"></InputText>
+                    	</div>
+                    	<button class="mt-5 btn-primary" type="submit">Create</button>
+                    </EditForm>
+
+                  
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-5"/>
+    </div>
+</AuthorizeView>
+
+

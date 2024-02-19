@@ -85,6 +85,11 @@ a, .btn-link {
     background-color: black;
     color: white;
 }
+/******************NAVBAR*******************/
+#custom-navbar{
+    background-color: transparent !important;
+}
+
 /******************HEADER*******************/
 #header {
     height: 100vh;

@@ -3,6 +3,7 @@ using CV.Data;
 using CV.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using CV.Models.Weather;
 
 namespace CV.API
 {
@@ -33,7 +34,33 @@ namespace CV.API
 
             app.UseAuthorization();
 
+            //****************WEATHER*********************
+            app.MapGet("/weather", async () =>
+            {
+                using (var client = new HttpClient())
+                {
+                    try
+                    {
+                        var response = await client.GetAsync(
+                            "https://api.open-meteo.com/v1/forecast?latitude=57.7072&longitude=11.9668&current=temperature_2m,rain");
+                        var content = await response.Content.ReadAsStringAsync();
 
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var weather = Newtonsoft.Json.JsonConvert.DeserializeObject<Weather>(content);
+                            return Results.Ok(weather);
+                        }
+                        else
+                        {
+                            return Results.NotFound("Cant get current weather...");
+                        }
+                    }
+                    catch
+                    {
+                        return Results.NotFound("Cant get current weather...");
+                    }
+                }
+            });
 
             //****************ABOUT*********************
             //Create
@@ -77,7 +104,7 @@ namespace CV.API
             });
 
             //Delete
-            app.MapDelete("/about", async (ApplicationDbContext context, int id) =>
+            app.MapDelete("/about/{id}", async (ApplicationDbContext context, int id) =>
             {
                 var toDelete = context.About.ToList().Find(x => x.Id ==id);
                 if(toDelete == null)
@@ -133,7 +160,7 @@ namespace CV.API
             });
 
             //Delete
-            app.MapDelete("/education", async (ApplicationDbContext context, int id) =>
+            app.MapDelete("/education/{id}", async (ApplicationDbContext context, int id) =>
             {
                 var toDelete = context.Educations.ToList().Find(x => x.Id == id);
                 if (toDelete == null)
@@ -189,7 +216,7 @@ namespace CV.API
             });
 
             //Delete
-            app.MapDelete("/job", async (ApplicationDbContext context, int id) =>
+            app.MapDelete("/job/{id}", async (ApplicationDbContext context, int id) =>
             {
                 var toDelete = context.Jobs.ToList().Find(x => x.Id == id);
                 if (toDelete == null)
@@ -244,7 +271,7 @@ namespace CV.API
             });
 
             //Delete
-            app.MapDelete("/project", async (ApplicationDbContext context, int id) =>
+            app.MapDelete("/project/{id}", async (ApplicationDbContext context, int id) =>
             {
                 var toDelete = context.Projects.ToList().Find(x => x.Id == id);
                 if (toDelete == null)
@@ -296,7 +323,7 @@ namespace CV.API
             });
 
             //Delete
-            app.MapDelete("/skill", async (ApplicationDbContext context, int id) =>
+            app.MapDelete("/skill/{id}", async (ApplicationDbContext context, int id) =>
             {
                 var toDelete = context.Skills.ToList().Find(x => x.Id == id);
                 if (toDelete == null)

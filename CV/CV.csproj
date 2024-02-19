@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Components\" />
     <Folder Include="wwwroot\assets\img\" />
     <Folder Include="wwwroot\assets\video\" />
   </ItemGroup>

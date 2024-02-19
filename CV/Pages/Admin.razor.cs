@@ -1,12 +1,10 @@
 ﻿using CV.Models;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Identity.Client;
-using System.Net.Http.Json;
-using CV.Models.Weather;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CV.Pages
 {
-    partial class Index
+    partial class Admin
     {
         [Inject]
         IHttpClientFactory httpClientFactory { get; set; }
@@ -16,7 +14,6 @@ namespace CV.Pages
         public List<Job> jobs { get; set; }
         public List<Project> projects { get; set; }
         public List<About> abouts { get; set; }
-        public Weather weather { get; set; }
 
         //Create
         public About newAbout = new About();
@@ -41,28 +38,9 @@ namespace CV.Pages
             educations = await apiClient.GetFromJsonAsync<List<Education>>("educations");
             jobs = await apiClient.GetFromJsonAsync<List<Job>>("jobs");
             projects = await apiClient.GetFromJsonAsync<List<Project>>("projects");
-            weather = await apiClient.GetFromJsonAsync<Weather>("weather");
 
         }
 
-        //Navigation***********************************************************************
-        private void ScrollToAbout()
-        {
-            Navigation.NavigateTo("#about", true);
-        }
-
-        //WEATHER***********************************************************************
-
-        private string Weather()
-        {
-            if (weather.Current.Rain > 0)
-                return $"Its raining and {weather.Current.Temperature_2m} \u00b0C. Should we meet up for a coffe to talk?";
-
-            if(weather.Current.Temperature_2m < 10)
-                return $"Its not raining but {weather.Current.Temperature_2m} \u00b0C. Should we meet up for a coffe to talk?";
-
-            return $"Its a beautiful day outside and {weather.Current.Temperature_2m} \u00b0C. Should we meet up for a coffe in the sun?";
-        }
 
         //CREATE***********************************************************************
 
@@ -78,7 +56,7 @@ namespace CV.Pages
                 newAbout.Phone = "";
                 newAbout.ImagePath = "";
                 StateHasChanged();
-                
+
             }
             catch (Exception ex)
             {
@@ -105,7 +83,7 @@ namespace CV.Pages
         {
             try
             {
-                
+
                 await apiClient.PostAsJsonAsync<Project>("project", newProject);
                 newProject.Name = "";
                 newProject.Year = 0;
@@ -227,6 +205,5 @@ namespace CV.Pages
         {
             HttpResponseMessage response = await apiClient.DeleteAsync($"skill/{editSkill.Id}");
         }
-
     }
 }
