@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/3d-isometric" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 
@@ -15,81 +18,97 @@
 <section id="header">
     <div class="container-fluid header">
         <video src="assets/video/background.mp4" class="header-video" autoplay loop muted></video>
-        @* <h1 class="header-text">Magnus Forsman</h1> *@
-        <a class="btn btn-warning" @onclick="ScrollToAbout">Enter</a>
+        <img class="img-header" src="assets/img/facecolor.png" alt="Face sticker" />
+        <img class="chat-header" src="assets/img/chat.gif" alt="Chat bubble" />
+        @if (weather == null)
+        {
+            <p>Loading</p>
+        }
+        else
+        {
+            <h4 class="text-header">Hello there! <br /><br />@Weather()<br /> Should we meet up for a coffe?</h4>
+            <a @onclick="Continue" class="btn-header"><h1 class="threede">Continue</h1></a>
+        }
     </div>
 </section>
-
+<div class="container-fluid" style="height:10vh; background-color: black;"></div>
+<section id="separator">
+</section>
 
 @* About *@
 <section id="about">
-    <div class="container-fluid mt-5 d-flex justify-content-center text-center">
-        
+    <div class="container">
         <div class="row">
+            <div class=" justify-content-center text-center">
+                <h1 class="threede">Contact</h1>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5 d-flex justify-content-center text-center">
+
+        <div class="row mt-2 align-items-center">
             <hr class="custom-hr my-5" />
             <div class="col-12 col-lg-6 d-flex justify-content-center">
-                
-                <img src="assets/img/me2.png" class="profile-picture"/>
+                <img src="assets/img/me.jpg" class="profile-picture" alt="Profile picture" />
             </div>
-            <div class="col-6 mt-5">
-                <h1 class="mb-3">MAGNUS FORSMAN</h1>
-                <h4>.NET Cloud Developer <br/> student ITHS</h4>
-                <h4 class="mt-5">0725172527 <br> forsman.magnus@gmail.com</h4>
-                @if (weather == null)
-                {
-                    <p>Loading</p>
-                }
-                else
-                {
-                    <p>@Weather()</p>
-                }
+            <div class="col-12 col-lg-6 align-content-center mt-2">
+                <h4>.NET Cloud Developer <br /> student at ITHS</h4>
+                <h4 class="mt-5">@about.Phone <br> @about.Email</h4>
             </div>
-        <hr class="custom-hr my-5" />
+            <hr class="custom-hr my-5" />
         </div>
 
-
     </div>
-    <div class="container mt-5 d-flex text-center">
-        <div class="row d-flex text-center">
-            <div class="col-12 col-lg-6 ">
-                <div class="mb-5">
-                    <h1>Skills</h1>
 
-                </div>
-                @if(skills == null)
-                {
-                    <p>Loading...</p>
-                    
-                }
-                else
-                    {
-                        @foreach (var skill in skills)
-                        {
-                            <p>@skill.Name</p>
-
-                        }
-                    }
-                
-            </div>
-            <div class="col-6">
-                <div class="mb-5 d-flex justify-content-center">
-
-                <h1>About</h1>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem nulla pharetra diam sit amet nisl suscipit. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus. Urna nec tincidunt praesent semper feugiat nibh. Egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Sodales neque sodales ut etiam sit amet. Cursus vitae congue mauris rhoncus aenean. Orci dapibus ultrices in iaculis nunc sed augue lacus. Placerat vestibulum lectus mauris ultrices. Suspendisse potenti nullam ac tortor vitae. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p>
-                
-            </div>
-        </div>
-    </div>
 </section>
+
+<section id="skills">
+    <div class="container">
+        <div class="row">
+            <div class="mb-5 justify-content-center text-center">
+                <h1 class="threede">Skills</h1>
+
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            
+            @if (skills == null)
+            {
+                <p>Loading...</p>
+
+            }
+            else
+            {
+                @foreach (var skill in skills)
+                {
+                <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="text-center">
+                            <h3>@skill.Name</h3>
+                        </div>
+                        <div class="progress my-4">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: @skill.Progress%;"></div>
+                        </div>
+                    </div>
+                <div class="col-2"></div>
+                    
+
+                }
+            }
+        </div>
+</section>
+
+
 
 @* Projects *@
 <section id="project">
     <div class="row  d-flex text-center mb-5">
-        <h1 style="padding-top: 5vh;">Projects</h1>
+        <h1 style="padding-top: 5vh; " class="threede">Projects</h1>
     </div>
     <div class="container-fluid">
-        @if(educations == null)
+        @if (projects == null)
         {
             <p>Loading..</p>            
         }
@@ -98,9 +117,21 @@
             <div class="row d-flex justify-content-center">
                 @foreach(var project in projects)
                 {
-                    <div class="card mb-3 col-3 m-4">
-                        <img src="assets/img/projects/wpfsample.png" />
+                    
+                    <div class="card mb-3 col-11 col-lg-3 m-4 card-hoover">
+                        <div class="card-body">
+                            <h3 class="card-title">@project.Name</h3>
+                        </div>
+                        <div>
+                            <a href="@project.Description"><img src="@project.ImagePath" class="card-img" alt="Project Image" /></a>
+                        </div>
+
+
+                        <div class="card-footer text-muted my-3">
+                            @project.Year
+                        </div>
                     </div>
+                    
                 }
             </div>
         }
@@ -110,7 +141,7 @@
 @* Educations *@
 <section id="education">
     <div class="row  d-flex text-center mb-5">
-        <h1 style="padding-top: 5vh;">Educations</h1>
+        <h1 style="padding-top: 5vh;" class="threede">Educations</h1>
         </div>
     <div class="container-fluid">
 
@@ -123,30 +154,16 @@
             <div class="row d-flex justify-content-center">
                 @foreach (var education in educations)
                 {
-                    <div class="card mb-3 col-3 m-4">
-                        <h3 class="card-header" style="color: black;">@education.Title</h3>
+                    <div class="card mb-3 col-11 col-lg-3 m-4 card-hoover">
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <h3 class="card-title">@education.Title</h3>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                            <rect width="100%" height="100%" fill="#868e96"></rect>
-                            <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div>
+                            <a href="@education.Description"><img src="@education.ImagePath" class="card-img" alt="School Image" /></a>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            2 days ago
+
+                        <div class="card-footer text-muted my-3">
+                            @education.StartYear - @education.EndYear
                         </div>
                     </div>
 
@@ -158,9 +175,9 @@
 
 
 @* Jobs *@
-<section id="education">
+<section id="job">
     <div class="row  d-flex text-center">
-        <h1 style="padding-top: 5vh;">Jobs</h1>
+        <h1 style="padding-top: 5vh;" class="threede">Jobs</h1>
     </div>
     <div class="container-fluid" style="padding-bottom: 5vh;">
 
@@ -170,33 +187,22 @@
         }
         else
         {
-            <div class="row d-flex justify-content-center mt-5">
+            <div class="row d-flex justify-content-center mt-5 ">
                 @foreach (var job in jobs)
                 {
-                    <div class="card mb-3 col-3 m-4">
-                        <h3 class="card-header" style="color: black;">@job.Title</h3>
+                    <div class="card mb-3 col-11 col-lg-3 m-4 card-hoover">
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                            <h3 class="card-title">@job.Title</h3>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                            <rect width="100%" height="100%" fill="#868e96"></rect>
-                            <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                        </svg>
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div>
+                            <img src="@job.ImagePath" class="card-img" alt="Company Image"/>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                        <div class="card-body text-muted">
+                            <p class="card-text">@job.Description</p>
                         </div>
+
                         <div class="card-footer text-muted">
-                            2 days ago
+                            @job.StartYear - @job.EndYear
                         </div>
                     </div>
 
@@ -206,4 +212,7 @@
     </div>
 </section>
 
+
 <Admin />
+<section id="invseparator">
+</section>

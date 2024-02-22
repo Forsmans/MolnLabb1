@@ -1,9 +1,29 @@
-﻿<footer class="bg-body-tertiary text-center text-lg-start">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2024 Copyright: Magnus Forsman
-
+﻿<footer class="bg-body-tertiary text-center text-lg-start" >
+    <div class="p-5" style="background-color:black;">
+        <div class="row d-flex text-center">
+            <a href="https://www.linkedin.com/in/magnus-forsman-a61078244/"><i class="fa fa-linkedin-square" style="font-size:35px;color:#707070"></i></a>
+        </div>
+        <div class="row">
+            <div class="text-center mt-3">
+                <p style="color: #707070;">Designed by Magnus Forsman</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <AuthorizeView>
+                    <Authorized>
+                        <form method="post" action="Identity/Account/Logout">
+                            <button type="submit" class="nav-link btn btn-dark mx-4">Log out</button>
+                        </form>
+                    </Authorized>
+                    <NotAuthorized>
+                        <a href="Identity/Account/Login"><i class="fa fa-cog" aria-hidden="true" style="font-size:35px;color:#707070; margin-right: 3vh;"></i></a>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+        </div>
     </div>
+    
 
 </footer>
 

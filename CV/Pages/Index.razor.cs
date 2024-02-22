@@ -26,7 +26,7 @@ namespace CV.Pages
         public Job newJob = new Job();
 
         //EDIT
-        public About editAbout = new About();
+        public About about = new About();
         public Skill editSkill = new Skill();
         public Project editProject = new Project();
         public Education editEdc = new Education();
@@ -36,7 +36,7 @@ namespace CV.Pages
         protected override async Task OnInitializedAsync()
         {
             abouts = await apiClient.GetFromJsonAsync<List<About>>("abouts");
-            editAbout = abouts.FirstOrDefault();
+            about = abouts.FirstOrDefault();
             skills = await apiClient.GetFromJsonAsync<List<Skill>>("skills");
             educations = await apiClient.GetFromJsonAsync<List<Education>>("educations");
             jobs = await apiClient.GetFromJsonAsync<List<Job>>("jobs");
@@ -46,9 +46,9 @@ namespace CV.Pages
         }
 
         //Navigation***********************************************************************
-        private void ScrollToAbout()
+        private void Continue()
         {
-            Navigation.NavigateTo("#about", true);
+            Navigation.NavigateTo("#separator", true);
         }
 
         //WEATHER***********************************************************************
@@ -56,12 +56,12 @@ namespace CV.Pages
         private string Weather()
         {
             if (weather.Current.Rain > 0)
-                return $"Its raining and {weather.Current.Temperature_2m} \u00b0C. Should we meet up for a coffe to talk?";
+                return $"Its raining and {weather.Current.Temperature_2m} \u00b0C outside.";
 
             if(weather.Current.Temperature_2m < 10)
-                return $"Its not raining but {weather.Current.Temperature_2m} \u00b0C. Should we meet up for a coffe to talk?";
+                return $"Its cloudy and {weather.Current.Temperature_2m} \u00b0C  outside.";
 
-            return $"Its a beautiful day outside and {weather.Current.Temperature_2m} \u00b0C. Should we meet up for a coffe in the sun?";
+            return $"Its a beautiful day and {weather.Current.Temperature_2m} \u00b0C  outside.";
         }
 
         //CREATE***********************************************************************
@@ -164,7 +164,7 @@ namespace CV.Pages
         //EDIT*****************************************************************************
         private async Task UpdateAboutAsync()
         {
-            HttpResponseMessage response = await apiClient.PutAsJsonAsync($"about/{editAbout.Id}", editAbout);
+            HttpResponseMessage response = await apiClient.PutAsJsonAsync($"about/{about.Id}", about);
         }
 
         private async Task UpdateSkillAsync()

@@ -4,14 +4,18 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: "Abril Fatface", serif;
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
     font-style: normal;
 }
 p{
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
+}
+
+.threede {
+    font-family: '3D Isometric', sans-serif;
 }
 
 
@@ -81,8 +85,8 @@ a, .btn-link {
     }
 
 
-.page{
-    background-color: black;
+.page {
+    background-color: #191919;
     color: white;
 }
 /******************NAVBAR*******************/
@@ -110,15 +114,63 @@ a, .btn-link {
 }
 
 .header-text,
-.btn {
+.btn-header {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
 }
+.img-header {
+    position: absolute;
+    top: 70%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    color: white;
+    height: 30vh;
+}
 
-.btn {
+.chat-header {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    height: 42vh;
+}
+
+.text-header {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    height: 40vh;
+    font-size: large;
+    color: black;
+}
+
+.btn-header {
+    position: absolute;
+    top: 91%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ebcf43;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: larger;
+}
+.btn-header {
+    text-decoration: none; 
+}
+
+    .btn-header:hover {
+        color: inherit; /* Use the color of the parent container on hover */
+    }
+
+
+/*.btn-header {
     padding: 10px 20px;
     font-size: 18px;
     text-decoration: none;
@@ -126,7 +178,7 @@ a, .btn-link {
     color: white;
     background-color: black;
     border-radius: 5px;
-}
+}*/
 /******************MISCELLANEOUS*******************/
 .custom-hr {
     color: white;
@@ -136,24 +188,64 @@ a, .btn-link {
 
 /******************ABOUT*******************/
 #about {
-    height: 100vh;
+    background-color: #191919;
+    margin-bottom: 10vh;
 }
 .profile-picture {
     border-radius: 300px;
     width: 80%;
     
 }
+/******************SKILLS*******************/
+#skills {
+    background-color: #191919;
+    margin-bottom: 10vh;
+}
+/******************SEPARATOR*******************/
+#separator {
+    height: 25vh;
+    background: linear-gradient(to bottom, black, #191919);
+}
+
+#invseparator {
+    height: 15vh;
+    background: linear-gradient(to bottom, #191919, black);
+}
 /******************PROJECT*******************/
 #project {
-    background-color: #202020;
+    background-color: #191919;
 }
 
 /******************EDUCATION*******************/
-#education{
-    background-color: #202020;
+#education {
+    background-color: #191919;
 }
 
 /******************JOB*******************/
 #job {
-    background-color: #202020;
+    background-color: #191919;
 }
+
+
+/******************CARD*******************/
+.card {
+    background-color: #202020;
+    border-radius: 30px;
+    
+    
+}
+.card-img {
+    height: 22vh;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+
+.card-hoover {
+    transition: transform 0.3s;
+}
+
+    .card-hoover:hover {
+        transform: scale(1.1); 
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    }
