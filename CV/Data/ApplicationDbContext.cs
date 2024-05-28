@@ -18,9 +18,9 @@ namespace CV.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connection = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Labb1AdminMoln;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-            var connectionString = Environment.GetEnvironmentVariable("CVdbConnectionString");
-            optionsBuilder.UseSqlServer(connection);
+            //var connection = "Server=localhost,1433;Database=MolnAdminLabb1;User Id=SA;Password=Ruddalen2022;TrustServerCertificate=True;";
+            //var connectionString = Environment.GetEnvironmentVariable("CVdbConnectionString");
+            //optionsBuilder.UseSqlServer(optionsBuilder);
         }
     }
 }

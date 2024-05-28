@@ -27,7 +27,7 @@ namespace CV
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             builder.Services.AddHttpClient("CV.API", client =>
             {
-                client.BaseAddress = new Uri("https://localhost:7254/");
+                client.BaseAddress = new Uri("http://CvApi:80");
             });
 
             var app = builder.Build();

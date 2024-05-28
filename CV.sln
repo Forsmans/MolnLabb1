@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CV", "CV\CV.csproj", "{6588
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CV.API", "CV.API\CV.API.csproj", "{4D207CC8-6F12-4EC9-BB76-49440F375F8E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06CE6AB0-44E1-43EC-AC20-5FCFDD899ECC}"
+	ProjectSection(SolutionItems) = preProject
+		CV.API\Dockerfile = CV.API\Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

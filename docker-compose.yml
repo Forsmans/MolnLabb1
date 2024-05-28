@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  Cv:
+    image: forsmans/cvlabb1:latest
+    ports:
+      - "8080:80"
+    networks:
+      - labb1
+    depends_on:
+      - CvApi
+
+  CvApi:
+    image: forsmans/cvapilabb1:latest
+    ports:
+      - "8081:80"
+    networks:
+      - labb1
+    depends_on:
+      - MolnAdminLabb1cv
+
+  MolnAdminLabb1cv:
+    image: forsmans/sqlcvlabb1:latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Ruddalen2022"
+    ports:
+      - "1433:1433"
+    networks:
+      - labb1
+
+networks:
+  labb1:
+    driver: bridge
